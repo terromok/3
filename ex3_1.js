@@ -51,15 +51,19 @@ const map = {
     let td1 = document.getElementByClassName('cell');
     td1.style.backgroundColor = `td1.attributes`;
   }
+};
+function click() {
+  $('#game').on('click',  function(e) {
+    let td1 = $('.cell');
+    td1.css.backgroundColor = `${td1.color}`;
+  });
 };*/
 
-function click() {
-  $('#game').on('click', 'td', function() {
-    let td1 = $('td');
-    td1.css.backgroundColor = `td1.attributes`;
-  });
-};
-
+$('#game').on('click', function(e){
+    //e.stopPropagation();
+    //el = e.hasAttribute();
+    console.log( e.target.attributes[2].value); // элемент, на котором произошло событие
+});
 /*const game = {
  // config,
   map,
@@ -77,7 +81,7 @@ function click() {
       td1.style.backgroundColor = `td1.attributes`;
     }
   }
-
+.getAttributes('color')
 };*/
 
 (function($) {
