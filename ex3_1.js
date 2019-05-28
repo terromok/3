@@ -1,6 +1,6 @@
 //массив с цветами, которые потом будем перемешивать случайным образом
 const colors = ['green', 'yellow', 'red', 'blue','green', 'yellow', 'red', 'blue',
-                'orange', 'ligthblue', 'purple', 'grey', 'orange', 'ligthblue', 'purple', 'grey'];
+                'orange', 'white', 'purple', 'grey', 'orange', 'white', 'purple', 'grey'];
 
 //отрисовываем таблицу 4х4 и задаем каждой ячейке 
 //класс с названием цвета
@@ -46,46 +46,16 @@ const map = {
   }/**/
 };
 
-/*const click = {
-  click() {
-    let td1 = document.getElementByClassName('cell');
-    td1.style.backgroundColor = `td1.attributes`;
-  }
-};
-function click() {
-  $('#game').on('click',  function(e) {
-    let td1 = $('.cell');
-    td1.css.backgroundColor = `${td1.color}`;
-  });
-};*/
-
 $('#game').on('click', function(e){
-    //e.stopPropagation();
-    //el = e.hasAttribute();
-    console.log( e.target.attributes[2].value); // элемент, на котором произошло событие
+
+    //console.log( e.target.attributes[2].value); // элемент, на котором произошло событие
+    const tdElem =document.getElementById(`${e.target.attributes[0].value}`);
+    tdElem.style.backgroundColor = `${e.target.attributes[2].value}`;
+    //console.log(tdElem); 
 });
-/*const game = {
- // config,
-  map,
-  //click,
-
-  init() {
-    // Инициализируем табличку.
-    this.map.init();
-    this.map.setColor();
-  },
-
-  clickk() {
-    const td1 = document.getElementByClassName('cell');
-    td1.onclick = function () {
-      td1.style.backgroundColor = `td1.attributes`;
-    }
-  }
-.getAttributes('color')
-};*/
 
 (function($) {
   map.init();
   map.setColor();
-  click();
+  //click();
 })(jQuery);
