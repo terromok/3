@@ -1,3 +1,9 @@
+//массив с цветами, которые потом будем перемешивать случайным образом
+const colors = ['green', 'yellow', 'red', 'blue','green', 'yellow', 'red', 'blue',
+                'orange', 'ligthblue', 'purple', 'grey', 'orange', 'ligthblue', 'purple', 'grey'];
+
+//отрисовываем таблицу 4х4 и задаем каждой ячейке 
+//класс с названием цвета
 const map = {
 
   init() {
@@ -27,40 +33,49 @@ const map = {
     let colorsRandom = colors.sort(function(){
       return Math.random() - 0.5;
     });
-    let j=0;
+    let j=0; //счетчик перебора ячеек
     for (let row = 0; row < 4; row++) {
       for (let col = 0; col < 4; col++) {
         //перебираем каждую ячейку
         const tdColors =document.getElementById(`col${col.toString()}_row${row.toString()}`);
-        //присваиваем этой ячейке стиль
-        tdColors.style.backgroundColor = `${colorsRandom[j]}`;
+        //присваиваем этой ячейке атрибут с названием цвета
+        //tdColors.style.backgroundColor = `${colorsRandom[j]}`;
+        //tdColors.classList.add(`${colorsRandom[j]}`)
+        tdColors.setAttribute('color', `${colorsRandom[j]}`);
         j++;
       }
     }
   }/**/
 };
 
-const colors = ['green', 'yellow', 'red', 'blue','green', 'yellow', 'red', 'blue',
-                'orange', 'ligthblue', 'purple', 'grey', 'orange', 'ligthblue', 'purple', 'grey'];
-
-const col1 = [0, 0, 0, 0]
-
-
+/*const click = {
+  clickk() {
+    let td1 = document.getElementByClassName('cell');
+    td1.onclick = function () {
+      td1.style.backgroundColor = `td1.attributes`;
+    }
+  }
+}
+*/
 
 const game = {
  // config,
   map,
+  //click,
 
   init() {
-    // Инициализируем карту.
+    // Инициализируем табличку.
     this.map.init();
     this.map.setColor();
-    
   },
 
-  
+  clickk() {
+    const td1 = document.getElementByClassName('cell');
+    td1.onclick = function () {
+      td1.style.backgroundColor = `td1.attributes`;
+    }
+  }
 
- 
 };
 
 // При загрузке страницы инициализируем игру.
