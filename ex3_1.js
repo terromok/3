@@ -87,15 +87,22 @@ function startTimer() {
     var arr = time.split(":");
     var m = arr[0];
     var s = arr[1];
-    s++;
-    if (s < 10) s = "0" + s;
-    if (s == 60) {
-      s = "0" + 0;
-      m++;
-      if (m < 10) m = "0" + m;
+    var ms = arr[2];
+    ms= +ms + 10;
+    if (ms < 100) ms = "0" + ms;
+    if (ms == 1000) {
+      ms = 0;
+      s++;
+      if (s < 10) s = "0" + s;
+      if (s == 60) {
+        s = "0" + 0;
+        m++;
+        if (m < 10) m = "0" + m;
+      }
     }
-    document.getElementById("my_timer").innerHTML = m+":"+s;
-    setTimeout(startTimer, 1000);
+    
+    document.getElementById("my_timer").innerHTML = m+":"+s+":"+ms;
+    setTimeout(startTimer, 10);
   }
 
 (function($) {
