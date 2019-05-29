@@ -2,6 +2,12 @@
 const colors = ['green', 'yellow', 'red', 'blue','green', 'yellow', 'red', 'blue',
                 'orange', 'white', 'purple', 'grey', 'orange', 'white', 'purple', 'grey'];
 
+let cl = 0;  
+let cl1;
+let cl2;  
+let tdElem1;
+let tdElem2;            
+
 //отрисовываем таблицу 4х4 и задаем каждой ячейке 
 //класс с названием цвета
 const map = {
@@ -46,16 +52,51 @@ const map = {
   }/**/
 };
 
-$('#game').on('click', function(e){
 
-    //console.log( e.target.attributes[2].value); // элемент, на котором произошло событие
-    const tdElem =document.getElementById(`${e.target.attributes[0].value}`);
-    tdElem.style.backgroundColor = `${e.target.attributes[2].value}`;
-    //console.log(tdElem); 
-});
+function twoClick() {
+   
+  $('#game').on('click', function(e){
+    if (cl === 0) {
+      tdElem1 =document.getElementById(`${e.target.attributes[0].value}`);
+      tdElem1.style.backgroundColor = `${e.target.attributes[2].value}`;
+      cl1 = `${e.target.attributes[2].value}`;
+      cl = 1;}
+    else {
+      tdElem2 =document.getElementById(`${e.target.attributes[0].value}`);
+      tdElem2.style.backgroundColor = `${e.target.attributes[2].value}`;
+      cl2 = `${e.target.attributes[2].value}`;
+      cl = 0;
+      if (cl1 != cl2) {
+        tdElem1.style.backgroundColor = "";
+        tdElem2.style.backgroundColor = "";
+      } else {return};
+    }
+  })
+}
+
+/*function click() { //
+  if (cl == 0) {
+    
+    //cl++;
+  };
+};
+
+function click2() { //
+  if (cl == 1) {
+    $('#game').on('click', function(e){
+      const tdElem =document.getElementById(`${e.target.attributes[0].value}`);
+      tdElem.style.backgroundColor = `${e.target.attributes[2].value}`;
+    });
+    cl--;
+    if (click() != e.target.attributes[2].value) {
+      console.log(dadaaaaada);
+    }
+    cl--;
+  }
+};*/
 
 (function($) {
   map.init();
   map.setColor();
-  //click();
+  twoClick();
 })(jQuery);
