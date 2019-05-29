@@ -67,7 +67,7 @@ function twoClick() {
       cl2 = `${e.target.attributes[2].value}`;
       cl = 0;
       if (cl1 != cl2) {
-        setTimeout(clearBackGr, 500);
+        setTimeout(clearBackGr, 100);
         function clearBackGr() {
           tdElem1.style.backgroundColor = "";
           tdElem2.style.backgroundColor = "";
@@ -77,29 +77,29 @@ function twoClick() {
   })
 }
 
-/*function click() { //
-  if (cl == 0) {
-    
-    //cl++;
-  };
-};
-
-function click2() { //
-  if (cl == 1) {
-    $('#game').on('click', function(e){
-      const tdElem =document.getElementById(`${e.target.attributes[0].value}`);
-      tdElem.style.backgroundColor = `${e.target.attributes[2].value}`;
-    });
-    cl--;
-    if (click() != e.target.attributes[2].value) {
-      console.log(dadaaaaada);
+function startTimer() {
+    var my_timer = document.getElementById("my_timer");
+    var time = my_timer.innerHTML;
+    var arr = time.split(":");
+    var m = arr[0];
+    var s = arr[1];
+    s++;
+    if (s < 10) s = "0" + s;
+    if (s == 60) {
+      s = "0" + 0;
+      m++;
+      if (m < 10) m = "0" + m;
     }
-    cl--;
+    document.getElementById("my_timer").innerHTML = m+":"+s;
+    setTimeout(startTimer, 1000);
   }
-};*/
 
 (function($) {
   map.init();
-  map.setColor();
+  $('#playButton').on('click', function(e){
+    map.setColor();  
+    startTimer();
+  });
+  
   twoClick();
 })(jQuery);
