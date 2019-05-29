@@ -67,8 +67,11 @@ function twoClick() {
       cl2 = `${e.target.attributes[2].value}`;
       cl = 0;
       if (cl1 != cl2) {
-        tdElem1.style.backgroundColor = "";
-        tdElem2.style.backgroundColor = "";
+        setTimeout(clearBackGr, 500);
+        function clearBackGr() {
+          tdElem1.style.backgroundColor = "";
+          tdElem2.style.backgroundColor = "";
+        }
       } else {return};
     }
   })
