@@ -57,31 +57,31 @@ const map = {
 function twoClick() {
    
   $('#game').on('click', function(e){
-    if (cl === 0) {
+    if (cl === 0) { //проверяем, открыта или нет первая ячейка
       tdElem1 =document.getElementById(`${e.target.attributes[0].value}`);
-      tdElem1.style.backgroundColor = `${e.target.attributes[2].value}`;
-      cl1 = `${e.target.attributes[2].value}`;
-      cl = 1;}
-    else {
+      tdElem1.style.backgroundColor = `${e.target.attributes[2].value}`; //меняем стиль цвета фона ячейки
+      cl1 = `${e.target.attributes[2].value}`; //для сравнения с цветом у второй ячейки
+      cl = 1;} //флаг о том, что первая ячека открыта
+    else { //если первая ячейка открыта, то
       tdElem2 =document.getElementById(`${e.target.attributes[0].value}`);
-      tdElem2.style.backgroundColor = `${e.target.attributes[2].value}`;
-      cl2 = `${e.target.attributes[2].value}`;
-      cl = 0;
-      if (cl1 != cl2) {
-        setTimeout(clearBackGr, 100);
+      tdElem2.style.backgroundColor = `${e.target.attributes[2].value}`;//меняем стиль цвета фона ячейки
+      cl2 = `${e.target.attributes[2].value}`;//для сравнения с цветом у первой ячейки
+      cl = 0;//флаг о том, что вторая ячека открыта
+      if (cl1 != cl2) { //если цвета разные, то
+        setTimeout(clearBackGr, 100); //показываем обе ячейки еще 100 мс
         function clearBackGr() {
-          tdElem1.style.backgroundColor = "";
-          tdElem2.style.backgroundColor = "";
+          tdElem1.style.backgroundColor = ""; //фон первой ячейки очищаем
+          tdElem2.style.backgroundColor = ""; //фон второй ячейки очищаем
         }
-      } else {
-        timer++;
-        return};
+      } else { // если цвета совпадают, то
+        timer++; //счетчик для остановки таймера (при 8)
+        return}; 
     }
   })
 }
 
 function startTimer() {
-    if (timer == 8) {return};
+    if (timer == 8) {return}; //если все ячейки открыты
     var my_timer = document.getElementById("my_timer");
     var time = my_timer.innerHTML;
     var arr = time.split(":");
@@ -102,7 +102,7 @@ function startTimer() {
     }
     
     document.getElementById("my_timer").innerHTML = m+":"+s+":"+ms;
-    setTimeout(startTimer, 10);
+    setTimeout(startTimer, 10); //
   }
 
 (function($) {
