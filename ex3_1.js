@@ -6,7 +6,8 @@ let cl = 0;
 let cl1;
 let cl2;  
 let tdElem1;
-let tdElem2;            
+let tdElem2;  
+let timer;          
 
 //отрисовываем таблицу 4х4 и задаем каждой ячейке 
 //класс с названием цвета
@@ -72,12 +73,15 @@ function twoClick() {
           tdElem1.style.backgroundColor = "";
           tdElem2.style.backgroundColor = "";
         }
-      } else {return};
+      } else {
+        timer++;
+        return};
     }
   })
 }
 
 function startTimer() {
+    if (timer == 8) {return};
     var my_timer = document.getElementById("my_timer");
     var time = my_timer.innerHTML;
     var arr = time.split(":");
@@ -97,6 +101,7 @@ function startTimer() {
 (function($) {
   map.init();
   $('#playButton').on('click', function(e){
+    timer = 0;
     map.setColor();  
     startTimer();
   });
